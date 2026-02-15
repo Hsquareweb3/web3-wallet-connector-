@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web3 Wallet Connector Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <!-- Navigation -->
+  <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <span class="text-white font-bold text-sm">W3</span>
+          </div>
+          <h1 class="text-xl font-bold text-white">Web3 Wallet Connector</h1>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <section class="mb-12">
+      <h2 class="text-4xl font-bold text-white mb-6 leading-tight">Connect Your Wallet</h2>
+      <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+        Learn how to connect your wallet like MetaMask in Web3 apps – this is a static demo showing you the connection flow and interface patterns used in modern Web3 applications.
+      </p>
+    </section>
+
+    <!-- Connect Wallet Section -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 p-8 shadow-xl">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-white mb-2">Ready to Connect?</h3>
+          <p class="text-slate-400 mb-8 max-w-sm">Click the button below to simulate connecting your Web3 wallet. In a real app, this would trigger MetaMask or another wallet provider.</p>
+          
+          <button id="connectBtn" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg mb-6 w-full sm:w-auto">
+            Connect Wallet
+          </button>
+
+          <!-- Connected State (Hidden by default) -->
+          <div id="connectedState" class="hidden w-full">
+            <div class="bg-slate-700/50 rounded-lg p-4 mb-4 border border-green-500/30">
+              <p class="text-sm text-slate-300 mb-2">Connected Address</p>
+              <p class="text-lg font-mono font-bold text-green-400" id="addressDisplay">0xabc123def456abc789def456abc789d12345678</p>
+            </div>
+            <button id="disconnectBtn" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold py-2 px-6 rounded-lg transition-all duration-200 w-full">
+              Disconnect
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-white mb-8">How It Works</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold">1</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Install MetaMask</h4>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Download the MetaMask extension from the official website or your browser's app store. It's available for Chrome, Firefox, Edge, and Safari.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold">2</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Click Connect</h4>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Visit a Web3 app and click the "Connect Wallet" button. The app will request permission to access your wallet information.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-6 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold">3</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Confirm in Wallet</h4>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            A MetaMask popup will appear. Review the permission request and click "Connect" to establish the connection securely.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Security Info -->
+        <div class="bg-slate-800/40 border border-slate-700 rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h4 class="font-bold text-white mb-2">Your Private Keys Stay Safe</h4>
+              <p class="text-slate-400 text-sm">MetaMask never shares your private keys. Apps only get read access to your address.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- What Is Web3 -->
+        <div class="bg-slate-800/40 border border-slate-700 rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <svg class="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 7H7v6h6V7z"/>
+              <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2V2a1 1 0 112 0v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1h-2v1a1 1 0 11-2 0v-1H7a2 2 0 01-2-2v-1H4a1 1 0 110-2h1V9H4a1 1 0 010-2h1V5H4a1 1 0 010-2h1V2a2 2 0 012-2zm5 2H5v10h7V4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h4 class="font-bold text-white mb-2">What Is Web3?</h4>
+              <p class="text-slate-400 text-sm">Web3 enables decentralized apps powered by blockchain. Wallets like MetaMask are your identity and gateway.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Note -->
+    <section class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 mb-12">
+      <p class="text-slate-300 text-center">
+        <span class="font-semibold text-blue-400">💡 Note:</span> This is a static demo. The wallet address shown is simulated. In a real application, connecting would require a live wallet provider integration.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 mt-16">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p class="text-slate-400">Built with <span class="text-purple-400 font-semibold">CreateOS</span></p>
+        <p class="text-slate-500 text-sm">© 2024 Web3 Wallet Connector Demo. For educational purposes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
